@@ -7,10 +7,13 @@ use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class LearningObjectiveTagUpdated
+class LearningObjectiveTagDeleted
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    /**
+     * @var LearningObjectiveTag
+     */
     public LearningObjectiveTag $learningObjectiveTag;
 
     /**
@@ -23,5 +26,4 @@ class LearningObjectiveTagUpdated
 
         $this->learningObjectiveTag = $learningObjectiveTag;
     }
-
 }

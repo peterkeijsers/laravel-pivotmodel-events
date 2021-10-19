@@ -446,11 +446,19 @@
                                 <small>{{$learningObjective->tag_count}}</small>
                         @endisset
                         <form
-                            action="{{route('learningObjective.update', ['learningObjective' => $learningObjective])}}"
+                            action="{{route('learningObjective.addRandomTag', ['learningObjective' => $learningObjective])}}"
                             method="POST">
                             @method('PUT')
                             @csrf
                             <button>Add random tag</button>
+                        </form>
+                        <br/>
+                        <form
+                            action="{{route('learningObjective.deleteRandomTag', ['learningObjective' => $learningObjective])}}"
+                            method="POST">
+                            @method('DELETE')
+                            @csrf
+                            <button>Delete random tag</button>
                         </form>
                         </p>
                         <hr/>

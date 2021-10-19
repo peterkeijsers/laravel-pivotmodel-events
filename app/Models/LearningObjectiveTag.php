@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Events\LearningObjectiveTagCreated;
-use App\Events\LearningObjectiveTagUpdated;
+use App\Events\LearningObjectiveTagDeleted;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
 class LearningObjectiveTag extends Pivot
@@ -15,6 +15,6 @@ class LearningObjectiveTag extends Pivot
      */
     protected $dispatchesEvents = [
         'created' => LearningObjectiveTagCreated::class,
-        'updated' => LearningObjectiveTagUpdated::class
+        'deleted' => LearningObjectiveTagDeleted::class
     ];
 }

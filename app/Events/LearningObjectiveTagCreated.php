@@ -6,14 +6,13 @@ use App\Models\LearningObjectiveTag;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-use App\Models\LearningObjective;
 
 class LearningObjectiveTagCreated
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
-     * @var LearningObjective
+     * @var LearningObjectiveTag
      */
     public LearningObjectiveTag $learningObjectiveTag;
 

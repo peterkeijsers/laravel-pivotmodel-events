@@ -3,12 +3,12 @@
 namespace App\Listeners;
 
 use App\Events\LearningObjectiveTagCreated;
-use App\Events\LearningObjectiveTagUpdated;
+use App\Events\LearningObjectiveTagDeleted;
 use App\Models\LearningObjective;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
-class LearningObjectiveTagSubscriber implements ShouldQueue
+class LearningObjectiveTagSubscriber
 {
 
     /**
@@ -25,7 +25,7 @@ class LearningObjectiveTagSubscriber implements ShouldQueue
         );
 
         $events->listen(
-            LearningObjectiveTagUpdated::class,
+            LearningObjectiveTagDeleted::class,
             [self::class, 'updateLearningObjectiveTagsCount']
         );
     }
@@ -42,7 +42,6 @@ class LearningObjectiveTagSubscriber implements ShouldQueue
         $learningObjectiveTag = $event->learningObjectiveTag;
         $learningObjective = LearningObjective::findOrFail($learningObjectiveTag->learning_objective_id);
         $tagsCount = $learningObjective->tags()->count();
-
         $learningObjective->tag_count = $tagsCount;
         $learningObjective->save();
     }

@@ -20,8 +20,14 @@ Route::get('/', function () {
     ]);
 });
 
-Route::put('/learningobjective/{learningObjective}', function (\App\Models\LearningObjective $learningObjective) {
+Route::put('/learningobjective/addtag{learningObjective}', function (\App\Models\LearningObjective $learningObjective) {
     $randomTag = \App\Models\Tag::all()->random();
     $learningObjective->tags()->save($randomTag);
     return redirect('/');
-})->name('learningObjective.update');
+})->name('learningObjective.addRandomTag');
+
+Route::delete('/learningobjective/deletetag/{learningObjective}', function (\App\Models\LearningObjective $learningObjective) {
+    $randomTag = $learningObjective->tags()->get()->random();
+    $learningObjective->tags()->detach($randomTag);
+    return redirect('/');
+})->name('learningObjective.deleteRandomTag');
