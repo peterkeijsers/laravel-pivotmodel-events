@@ -15,8 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome', [
-        'learningObjectives' => \App\Models\LearningObjective::paginate(10),
-        'tags' => \App\Models\Tag::all()
+        'learningObjectives' => \App\Models\LearningObjective::with('tags')->paginate(10)
     ]);
 });
 
