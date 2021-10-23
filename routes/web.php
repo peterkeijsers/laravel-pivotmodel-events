@@ -25,6 +25,12 @@ Route::put('/learningobjective/addtag{learningObjective}', function (\App\Models
     return redirect('/');
 })->name('learningObjective.addRandomTag');
 
+Route::put('/learningobjective/synctags{learningObjective}', function (\App\Models\LearningObjective $learningObjective) {
+    $randomTags = \App\Models\Tag::all()->random(random_int(0, 20))->pluck('id');
+    $learningObjective->tags()->sync($randomTags);
+    return redirect('/');
+})->name('learningObjective.syncRandomTags');
+
 Route::delete('/learningobjective/deletetag/{learningObjective}', function (\App\Models\LearningObjective $learningObjective) {
     $randomTag = $learningObjective->tags()->get()->random();
     $learningObjective->tags()->detach($randomTag);

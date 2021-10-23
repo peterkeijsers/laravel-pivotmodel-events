@@ -460,6 +460,14 @@
                             @csrf
                             <button>Delete random tag</button>
                         </form>
+                        <br/>
+                        <form
+                            action="{{route('learningObjective.syncRandomTags', ['learningObjective' => $learningObjective])}}"
+                            method="POST">
+                            @method('PUT')
+                            @csrf
+                            <button>Sync x random tags</button>
+                        </form>
                         </p>
                         <hr/>
                     @endforeach

@@ -8,7 +8,7 @@ use App\Models\LearningObjective;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
-class LearningObjectiveTagSubscriber
+class LearningObjectiveTagSubscriber implements shouldQueue
 {
 
     /**
